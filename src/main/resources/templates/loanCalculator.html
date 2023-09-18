@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Loan Calculator</title>
+</head>
+<body>
+<h1>Loan Calculator</h1>
+<form th:action="@{/loan}" method="post">
+    <label for="loanAmount">Loan Amount:</label>
+    <input type="number" id="loanAmount" name="loanAmount" min="1" required><br><br>
+
+    <label for="paybackYears">Payback Years:</label>
+    <input type="number" id="paybackYears" name="paybackYears" max="30" min="1" required><br><br>
+
+    <button type="submit">Calculate</button>
+</form>
+
+<div th:if="${loanResult != null}">
+    <h2>Loan Calculation Result</h2>
+    <p>Monthly Payment: <span th:text="${loanResult.monthlyPayment}"></span></p>
+    <p>Total Payment: <span th:text="${loanResult.totalPayment}"></span></p>
+    <p>Payback Years: <span th:text="${loanResult.paybackYears}"></span></p>
+</div>
+</body>
+</html>
